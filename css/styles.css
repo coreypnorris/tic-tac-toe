@@ -1,0 +1,20 @@
+.square {
+    width:200px;
+    height:200px;
+}
+
+td {
+  text-align: center;
+}
+
+#row1 {
+  border-bottom: 1px solid black;
+}
+
+#row2 {
+  border-bottom: 1px solid black;
+}
+
+.h {
+  border-right: 1px solid black;
+}
