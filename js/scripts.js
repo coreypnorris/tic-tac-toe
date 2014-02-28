@@ -84,11 +84,9 @@ var Board = {
 };
 
 var Game = {
-  games: [],
-  create: function(game) {
+  create: function(playerOne, playerTwo) {
     var newGame = Object.create(Game);
-    newGame.initialize(game);
-    Game.games.push(newGame);
+    newGame.initialize(playerOne, playerTwo);
     return newGame;
   },
   initialize: function() {
@@ -98,7 +96,6 @@ var Game = {
     this.players.push(playerOne, playerTwo);
     this.currentBoard = Board.create();
     this.turn = this.players[0].symbol;
-    console.log(this.turn);
   },
   switchTurn: function() {
     if (this.turn === "X") {
@@ -108,17 +105,84 @@ var Game = {
     };
   },
   gameOver: function() {
-    
     if (this.currentBoard.victoryX === true) {
       alert("PLAYER 1 WINS!");
       return;
     } else if (this.currentBoard.victoryY === true) {
       alert("PLAYER 2 WINS!");
       return;
-    }
+    };
   }
 };
 
+$(document).ready(function() {
+  var newGame = Game.create("X", "O");
+
+  $("#a").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[0].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+    console.log(newGame.currentBoard.victoryX);
+  });
+  $("#b").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[1].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#c").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[2].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#d").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[3].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#e").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[4].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#f").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[5].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#g").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[6].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#h").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[7].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+  $("#i").click(function() {
+    $(this).text(newGame.turn);
+    newGame.currentBoard.spaces[8].markedBy = newGame.turn;
+    newGame.currentBoard.victory();
+    newGame.gameOver();
+    newGame.switchTurn();
+  });
+});
 
 
 
