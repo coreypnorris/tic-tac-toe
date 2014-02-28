@@ -22,7 +22,7 @@ describe("Space", function() {
     });
   });
   describe("initialize", function() {
-    it("it is initialized with a coordinates", function() {
+    it("it is initialized with coordinates", function() {
       var testSpace = Object.create(Space);
       testSpace.initialize(1, 2);
       testSpace.coordinateX.should.equal(1);
@@ -75,10 +75,62 @@ describe("Game", function() {
   });
   
   describe("initialize", function() {
-    it("creates 2 players", function() {
+    it("creates 2 Player objects and pushes them into an array", function() {
       var testGame = Object.create(Game);
       testGame.initialize();
       testGame.players.length.should.equal(2);
     });
+    it("creates a new Board object", function() {
+      var testGame = Object.create(Game);
+      testGame.initialize();
+      testGame.currentBoard.spaces.length.should.equal(9);
+    });
   });
+  
+  describe("switchTurn", function() {
+    it("changes the current turn", function() {
+      var testGame = Object.create(Game);
+      testGame.initialize();
+      testGame.switchTurn();
+      testGame.turn.should.equal("O");
+    });
+  });
+
+  describe("gameOver", function() {
+    it("decides when the game is over", function() {
+      var testGame = Object.create(Game);
+      testGame.initialize();
+      testGame.gameOver();
+      testGame
+    });
+  });
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

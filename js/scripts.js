@@ -27,6 +27,7 @@ var Space = {
 var Board = {
   create: function() {
     var newBoard = Object.create(Board);
+    newBoard.initialize();
     return newBoard;
   },
   initialize: function() {
@@ -60,21 +61,21 @@ var Board = {
       this.victoryX = true;
     } else if (this.spaces[2].markedBy === "X" && this.spaces[4].markedBy === "X" && this.spaces[6].markedBy === "X") {
       this.victoryX = true;
-    } else if (this.spaces[0].markedBy === "Y" && this.spaces[1].markedBy === "Y" && this.spaces[2].markedBy === "Y") {
+    } else if (this.spaces[0].markedBy === "O" && this.spaces[1].markedBy === "O" && this.spaces[2].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[3].markedBy === "Y" && this.spaces[4].markedBy === "Y" && this.spaces[5].markedBy === "Y") {
+    } else if (this.spaces[3].markedBy === "O" && this.spaces[4].markedBy === "O" && this.spaces[5].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[6].markedBy === "Y" && this.spaces[7].markedBy === "Y" && this.spaces[8].markedBy === "Y") {
+    } else if (this.spaces[6].markedBy === "O" && this.spaces[7].markedBy === "O" && this.spaces[8].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[0].markedBy === "Y" && this.spaces[3].markedBy === "Y" && this.spaces[6].markedBy === "Y") {
+    } else if (this.spaces[0].markedBy === "O" && this.spaces[3].markedBy === "O" && this.spaces[6].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[1].markedBy === "Y" && this.spaces[4].markedBy === "Y" && this.spaces[7].markedBy === "Y") {
+    } else if (this.spaces[1].markedBy === "O" && this.spaces[4].markedBy === "O" && this.spaces[7].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[2].markedBy === "Y" && this.spaces[5].markedBy === "Y" && this.spaces[8].markedBy === "Y") {
+    } else if (this.spaces[2].markedBy === "O" && this.spaces[5].markedBy === "O" && this.spaces[8].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[0].markedBy === "Y" && this.spaces[4].markedBy === "Y" && this.spaces[8].markedBy === "Y") {
+    } else if (this.spaces[0].markedBy === "O" && this.spaces[4].markedBy === "O" && this.spaces[8].markedBy === "O") {
       this.victoryY = true;
-    } else if (this.spaces[2].markedBy === "Y" && this.spaces[4].markedBy === "Y" && this.spaces[6].markedBy === "Y") {
+    } else if (this.spaces[2].markedBy === "O" && this.spaces[4].markedBy === "O" && this.spaces[6].markedBy === "O") {
       this.victoryY = true;
     } else {
       
@@ -93,8 +94,28 @@ var Game = {
   initialize: function() {
     this.players = [];
     var playerOne = Player.create("X");
-    var playerTwo = Player.create("Y");
+    var playerTwo = Player.create("O");
     this.players.push(playerOne, playerTwo);
+    this.currentBoard = Board.create();
+    this.turn = this.players[0].symbol;
+    console.log(this.turn);
+  },
+  switchTurn: function() {
+    if (this.turn === "X") {
+      this.turn = this.players[1].symbol;
+    } else if (this.turn === "O") {
+      this.turn = this.players[0].symbol;
+    };
+  },
+  gameOver: function() {
+    
+    if (this.currentBoard.victoryX === true) {
+      alert("PLAYER 1 WINS!");
+      return;
+    } else if (this.currentBoard.victoryY === true) {
+      alert("PLAYER 2 WINS!");
+      return;
+    }
   }
 };
 
