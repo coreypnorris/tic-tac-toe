@@ -24,7 +24,7 @@ describe("Space", function() {
   describe("initialize", function() {
     it("it is initialized with a coordinates", function() {
       var testSpace = Object.create(Space);
-      testSpace.initialize(1,2);
+      testSpace.initialize(1, 2);
       testSpace.coordinateX.should.equal(1);
       testSpace.coordinateY.should.equal(2);
     });
@@ -32,7 +32,7 @@ describe("Space", function() {
   describe("markBy", function() {
     it("lets a player mark the space", function() {
       var testPlayer = Player.create("X");
-      var testSpace = Space.create("A");
+      var testSpace = Space.create(1, 2);
       testSpace.markBy(testPlayer);
       testSpace.markedBy.should.equal(testPlayer);
     });
@@ -47,19 +47,38 @@ describe("Board", function() {
     });
   });
   describe("initialize", function() {
-    it("creates 9 spaces and pushes them into an array when it it initialized", function() {
+    it("it is initialized with 9 spaces and pushes them into an array", function() {
       var testBoard = Object.create(Board);
       testBoard.initialize();
-      testBoard.spaces.should.equal([space1,space2,space3,space4,space5,space6,space7,space8,space9]);
+      testBoard.spaces.length.should.equal(9);
+    });
+  });
+  describe("victory", function() {
+    it("determines if a player has got three in a row", function() {
+      var testBoard = Object.create(Board);
+      testBoard.initialize();
+      testBoard.spaces[0].markBy("X");
+      testBoard.spaces[1].markBy("X");
+      testBoard.spaces[2].markBy("X");
+      testBoard.victory();
+      testBoard.victoryX.should.equal(true);
     });
   });
 });
 
-
-
-
-
-
-
-
-
+describe("Game", function() {
+  describe("create", function() {
+    it("creates a new Game object", function() {
+      var testGame = Object.create(Game);
+      Game.isPrototypeOf(testGame).should.equal(true);
+    });
+  });
+  
+  describe("initialize", function() {
+    it("creates 2 players", function() {
+      var testGame = Object.create(Game);
+      testGame.initialize();
+      testGame.players.length.should.equal(2);
+    });
+  });
+});
