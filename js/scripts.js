@@ -78,7 +78,7 @@ var Board = {
     } else if (this.spaces[2].markedBy === "O" && this.spaces[4].markedBy === "O" && this.spaces[6].markedBy === "O") {
       this.victoryY = true;
     } else {
-      
+
     };
   }
 };
@@ -183,19 +183,3 @@ $(document).ready(function() {
     newGame.switchTurn();
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
